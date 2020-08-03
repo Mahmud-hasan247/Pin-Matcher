@@ -105,6 +105,10 @@ color: #E0B612;
 #notify2{
     display: none;
 }
+#notify3{
+    color: red;
+    display: none;
+}
 .notify-section{
     width: 35%;
     margin: 0 auto;

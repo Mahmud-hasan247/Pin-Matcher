@@ -37,7 +37,7 @@
                               <div id="3" class="button keys" onclick="input(this.id)">3</div>
                             </div>
                             <div class="calc-button-row">
-                                <div id="<" class="button"><</div>
+                                <div id="backspace" class="button"><</div>
                                 <div id="0" class="button keys" onclick="input(this.id)">0</div>
                                 <div id="C" class="button" >C</div>
                             </div>
@@ -52,6 +52,7 @@
         <div class="notify-section">
             <p id="notify1" class="notify">❌ Pin Didn't Match, Please try again</p>
             <p id="notify2" class="notify">✅ Pin Matched... Secret door is opening for you</p>
+            <p id="notify3" class="notify">Sorry, you are not entered any pin!</p>
         </div>
     </div>
     <script>
@@ -63,17 +64,30 @@
             document.getElementById("pin").value = result;
             document.getElementById("notify1").style.display = "none";
             document.getElementById("notify2").style.display = "none";
+            document.getElementById("notify3").style.display = "none";
             document.getElementById("enter-pin").value = "";
         });
+        function enteredPin (){
+            return document.getElementById("enter-pin").value;
+        }
         function input(num){
             const pinCode = document.getElementById("enter-pin").value = document.getElementById("enter-pin").value + num;
         }
         function submit (){
-            if ((document.getElementById("enter-pin").value)== document.getElementById("pin").value){
+            if (document.getElementById("enter-pin").value == ""){
+                document.getElementById("notify3").style.display = "block";
+                document.getElementById("notify1").style.display = "none";
+                document.getElementById("notify2").style.display = "none";
+            }
+            else if ((document.getElementById("enter-pin").value)== document.getElementById("pin").value){
                 document.getElementById("notify2").style.display = "block";
+                document.getElementById("notify3").style.display = "none";
+                document.getElementById("notify1").style.display = "none";
             }
             else{
                 document.getElementById("notify1").style.display = "block";
+                document.getElementById("notify2").style.display = "none";
+                document.getElementById("notify3").style.display = "none";
             }
         }
         document.getElementById("C").addEventListener("click", function(){
