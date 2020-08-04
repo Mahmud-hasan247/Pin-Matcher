@@ -93,7 +93,13 @@
         document.getElementById("C").addEventListener("click", function(){
             document.getElementById("enter-pin").value = "";
         })
-
+        document.getElementById("backspace").addEventListener("click", function(){
+            let Pin = document.getElementById("enter-pin").value;
+            let stringPin = Pin.toString();
+            let minusPin = stringPin.substr(0,stringPin.length-1);
+            console.log(minusPin);
+            document.getElementById("enter-pin").value = minusPin;
+        })
     </script>
 </body>
 </html>
